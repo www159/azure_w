@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="azure_m.Views.MonitorPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label  Grid.Row="0"  HeightRequest="45" VerticalOptions="Start" HorizontalOptions="Start"  Margin="90,20,0,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="监视器"  FontSize="34" FontAttributes="Bold"  />
+                    <Span Text=" | 概述" FontSize="34" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label Text="Microsoft" Grid.Row="0"  HeightRequest="20" VerticalOptions="Start" HorizontalOptions="Start" Margin="90,60,0,0" />
+        <Label Text="检查，会审和诊断" FontSize="25" Grid.Row="0" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Start" Margin="40,80,0,0" />
+        <Image Source="monitor2.png" Grid.Row="0" HeightRequest="60" WidthRequest="50" VerticalOptions="Start" HorizontalOptions="Start" Margin="40,20,0,0"/>
+        <!--指标部分-->
+        <Frame BorderColor="Black" Grid.Row="1" Margin="10,0,10,0">
+            <Grid>
+                <Image Source="dashboard2.png"  HeightRequest="45" WidthRequest="50" VerticalOptions="Start" HorizontalOptions="Start"  Margin="10,0,0,0"/>
+                <Label  Text="指标" FontSize="30"  HeightRequest="45" VerticalOptions="Start" HorizontalOptions="Start" Margin="60,0,0,0"/>
+                <Label  Text="创建图表以监视并调查Azure资源的使用情况和性能" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="Start" Margin="10,70,0,0"/>
+                <Line X1="10" X2="320" Y1="10" Y2="10" Margin="0,100,0,0" StrokeThickness="2" Stroke="lightgray"/>
+                <ImageButton  Source="view3.png"  BackgroundColor="White" HeightRequest="60" WidthRequest="50" VerticalOptions="Start" HorizontalOptions="Start"  Margin="10,120,0,0"
+                      Clicked="OnTargetViewClick"/>
+                <Button  Text="视图" TextColor="Black" BackgroundColor="White" FontSize="15"  HeightRequest="60" WidthRequest="60" VerticalOptions="Start" HorizontalOptions="Start" Margin="60,110,0,0"
+                Clicked="OnTargetViewClick"/>
+                <ImageButton Source="more4.png" BackgroundColor="White" HeightRequest="60" WidthRequest="50" VerticalOptions="Start" HorizontalOptions="Start"  Margin="220,110,0,0"/>
+                <Button  Text="更多" TextColor="Black" BackgroundColor="White" FontSize="15"  HeightRequest="60" WidthRequest="60" VerticalOptions="Start" HorizontalOptions="Start" Margin="270,110,0,0"/>
+            </Grid>
+        </Frame>
+        <!--警报部分-->
+        <Frame BorderColor="Black" Grid.Row="2" Margin="10,0,10,0">
+            <Grid>
+                <Image Source="dashboard2.png"  HeightRequest="45" WidthRequest="50" VerticalOptions="Start" HorizontalOptions="Start"  Margin="10,0,0,0"/>
+                <Label  Text="警报" FontSize="30"  HeightRequest="45" VerticalOptions="Start" HorizontalOptions="Start" Margin="60,0,0,0"/>
+                <Label  Text="获取通知并使用警报和操作进行响应" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="Start" Margin="10,70,0,0"/>
+                <Line X1="10" X2="320" Y1="10" Y2="10" Margin="0,100,0,0" StrokeThickness="2" Stroke="lightgray"/>
+                <ImageButton Source="view3.png" BackgroundColor="White" HeightRequest="60" WidthRequest="50" VerticalOptions="Start" HorizontalOptions="Start"  Margin="10,120,0,0"
+                             Clicked="OnWarnViewClick"/>
+                <Button  Text="视图" TextColor="Black" BackgroundColor="White" FontSize="15"  HeightRequest="60" WidthRequest="60" VerticalOptions="Start" HorizontalOptions="Start" Margin="60,110,0,0"
+                Clicked="OnWarnViewClick"/>
+                <ImageButton Source="more4.png"  BackgroundColor="White" HeightRequest="60" WidthRequest="50" VerticalOptions="Start" HorizontalOptions="Start"  Margin="220,110,0,0"/>
+                <Button  Text="更多" TextColor="Black" BackgroundColor="White" FontSize="15"  HeightRequest="60" WidthRequest="60" VerticalOptions="Start" HorizontalOptions="Start" Margin="270,110,0,0"/>
+            </Grid>
+        </Frame>
+        <!--日志部分-->
+        <Frame BorderColor="Black" Grid.Row="3" Margin="10,0,10,0">
+            <Grid>
+                <Image Source="dashboard2.png"  HeightRequest="45" WidthRequest="50" VerticalOptions="Start" HorizontalOptions="Start"  Margin="10,0,0,0"/>
+                <Label  Text="日志" FontSize="30"  HeightRequest="45" VerticalOptions="Start" HorizontalOptions="Start" Margin="60,0,0,0"/>
+                <Label  Text="分析并诊断日志查询的问题。" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="Start" Margin="10,70,0,0"/>
+                <Line X1="10" X2="320" Y1="10" Y2="10" Margin="0,100,0,0" StrokeThickness="2" Stroke="lightgray"/>
+                <ImageButton Source="view3.png" BackgroundColor="White" HeightRequest="60" WidthRequest="50" VerticalOptions="Start" HorizontalOptions="Start"  Margin="10,120,0,0"
+                             Clicked="OnLogViewClick"/>
+                <Button  Text="视图" TextColor="Black" BackgroundColor="White" FontSize="15"  HeightRequest="60" WidthRequest="60" VerticalOptions="Start" HorizontalOptions="Start" Margin="60,110,0,0"
+                Clicked="OnLogViewClick"/>
+                <ImageButton Source="more4.png" BackgroundColor="White" HeightRequest="60" WidthRequest="50" VerticalOptions="Start" HorizontalOptions="Start"  Margin="220,110,0,0"/>
+                <Button  Text="更多" TextColor="Black" BackgroundColor="White" FontSize="15"  HeightRequest="60" WidthRequest="60" VerticalOptions="Start" HorizontalOptions="Start" Margin="270,110,0,0"/>
+            </Grid>
+        </Frame>
+    </Grid>
+        
+
+</ContentPage>

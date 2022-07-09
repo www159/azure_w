@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="azure_m.App">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#1e6ede</Color>
+            <Color x:Key="SPrim"></Color>
+            <Color x:Key="DPrim">#1e6ede</Color><!--a0a0a0-->
+            <Color x:Key="Layout">white</Color> <!--f8ebd8-->
+            <Color x:Key="CardBack"></Color>
+            <Color x:Key="PrimaryText">#E4E6E1</Color>
+            <Color x:Key="DPrimText">#E4E6E1</Color>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryText}"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource PrimaryText}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <!--<Thickness x:Key="GMargin">10,0,0,</Thickness>-->
+        </ResourceDictionary>        
+    </Application.Resources>
+    
+</Application>

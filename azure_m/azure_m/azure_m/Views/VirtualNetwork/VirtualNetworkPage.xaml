@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:azure_m.ViewModels"
+             xmlns:model="clr-namespace:azure_m.Models"
+             x:Class="azure_m.Views.VirtualNetworkPage">
+
+    <Grid RowDefinitions="120, 40, auto, auto, auto">
+        
+        <Grid Grid.Row="0" ColumnDefinitions="300, auto, auto">
+            <Label  Grid.Row="0"  HeightRequest="45" VerticalOptions="Start" HorizontalOptions="Start"  Margin="90,20,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="虚拟网络"  FontSize="34" FontAttributes="Bold"  />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="Microsoft"  HeightRequest="20" VerticalOptions="Start" HorizontalOptions="Start" Margin="90,60,0,0" />
+            <Label Text="默认目录" FontSize="18" Grid.Row="0" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="Start" Margin="40,80,0,0" />
+            <Image Source="service5.png"  HeightRequest="40" WidthRequest="40" VerticalOptions="Start" HorizontalOptions="Start" Margin="40,30,0,0"/>
+        </Grid>
+        
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,*">
+            <StackLayout Orientation="Horizontal" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" Padding="0" >
+                <Image Source="add2.png" Margin="10,10,10,10" BackgroundColor="White"/>
+                <Label Text="创建" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" BackgroundColor="White" TextColor="#000000" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CreateTapGestureRecognizer_Tapped" NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image Source="icon_about.png" Margin="10,10,10,10" BackgroundColor="White"/>
+                <Label Text="管理" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" BackgroundColor="White" TextColor="#000000" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ManageTapGestureRecognizer_Tapped" NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">
+                <Image Source="refresh4.png" Margin="10,10,10,10" BackgroundColor="White"/>
+                <Label Text="刷新" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" BackgroundColor="White" TextColor="#000000" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="RefreshTapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </Grid>
+        
+        <Grid Grid.Row="2" ColumnDefinitions="* , *" Margin="0,20,0,0">
+            <Button Grid.Column="0" HorizontalOptions="Start" BackgroundColor="#ffffff" Margin="25,0,0,0" Text="显示已有筛选器" TextColor="#161616" FontSize="18"></Button>
+        </Grid>
+        
+        <Grid Grid.Row="3" ColumnDefinitions="*, 2*, *">
+            <Label Grid.Column="0" HorizontalOptions="Center" BackgroundColor="#ffffff" Text="名称" TextColor="#161616" FontSize="20"/>
+            <Label Grid.Column="1" HorizontalOptions="Center" BackgroundColor="#ffffff" Text="资源组" TextColor="#161616" FontSize="20"/>
+        </Grid>
+
+        <RefreshView
+                x:DataType="local:VirtualNetworkViewModel"
+                IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                Command="{Binding LoadVNsCommand}"
+                Grid.Row="4" 
+                >
+            <CollectionView 
+                    x:Name="vnCollection"
+                    ItemsSource="{Binding VirtualNetworks}" 
+                    SelectionMode="Single"
+                    SelectionChangedCommand="{Binding VNSelected}"
+                    SelectionChangedCommandParameter="{Reference vnCollection}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid  
+                            VerticalOptions="Start" 
+                            HorizontalOptions="Start"
+                            x:DataType="model:VirtualNetwork">
+                            <CheckBox VerticalOptions="Start" HorizontalOptions="Start"/>
+                            <Label 
+                                Text="{Binding name}" 
+                                VerticalOptions="Start" 
+                                HorizontalOptions="Start" 
+                                Margin="40,5,0,0" 
+                                WidthRequest="100"/>
+                            <Label 
+                                Text="{Binding resourceGroup}" 
+                                VerticalOptions="Start" 
+                                HorizontalOptions="Start" 
+                                Margin="170,5,0,0"
+                                WidthRequest="100"/>
+                            <!--<Label Text="{Binding osDiskSize}" Margin="260,5,0,0" />-->
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <!--<ScrollView Grid.Row="4">
+            <StackLayout x:Name="ResourceLayout" Margin="5,0,0,5" >
+
+            </StackLayout>
+        </ScrollView>-->
+    </Grid>
+</ContentPage>
